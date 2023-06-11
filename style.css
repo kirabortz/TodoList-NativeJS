@@ -1,0 +1,227 @@
+/*************************************** !!!   START   !!! ************************************/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #f5f5f5;
+}
+/* begin 1920px / 1024px ***********************************************************************/
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.name_header h1 {
+  font-size: 110px;
+  font-weight: 500;
+  color: #ead7d7;
+}
+.to_do_list {
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+  max-width: 550px;
+  height: 44px;
+  border: none;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+.tasks_list div {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  position: relative;
+}
+.to_do_list input {
+  width: 550px;
+  min-height: 58px;
+  padding: 15px 0;
+  outline: none;
+  border: none;
+  box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.2);
+  text-indent: 60px;
+  font-size: 24px;
+}
+.tasks_list input:hover {
+  cursor: default;
+}
+.new_task_input::placeholder {
+  font-style: italic;
+  color: lightgray;
+}
+.tasks_list input:hover + .delete_task_btn {
+  opacity: 1;
+}
+.complete_all_tasks,
+.active_all_tasks {
+  position: absolute;
+  top: 17px;
+  left: 7px;
+  width: 26px;
+  height: 26px;
+  border: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+
+  background-image: url(/icons/all_active_btn.png);
+}
+.active_all_tasks {
+  background-image: url(/icons/all_completed_btn.png);
+}
+.complete_task_btn,
+.complete_task_btn_done,
+.delete_task_btn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+}
+.complete_task_btn {
+  top: 15px;
+  left: 5px;
+  background-image: url(/icons/active_btn.png);
+}
+.complete_task_btn_done {
+  top: 15px;
+  left: 5px;
+  background-image: url(/icons/completed_btn.png);
+}
+.delete_task_btn {
+  top: 24px;
+  right: 15px;
+  width: 12px;
+  height: 12px;
+  padding: 8px;
+  opacity: 0;
+  background-image: url(/icons/delete_btn.png);
+}
+.delete_task_btn:hover {
+  opacity: 1;
+}
+.done {
+  text-decoration: line-through;
+  color: lightgrey;
+}
+.status_btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 7px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  color: #7c7c7c;
+}
+.hidden_status_btns {
+  visibility: hidden;
+}
+.task_count {
+  position: relative;
+  left: 15px;
+}
+.filter_btns {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 200px;
+}
+.filter_btns button:focus {
+  border: 1px solid #ead7d7;
+}
+.filter_btns button,
+.clear_completed_btn {
+  padding: 4px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background-color: transparent;
+  color: #7c7c7c;
+}
+.clear_completed_btn {
+  position: relative;
+  right: 15px;
+}
+.filter_btns button:hover,
+.clear_completed_btn:hover {
+  border: 1px solid #ead7d7;
+}
+.under1,
+.under2 {
+  height: 5px;
+  margin: 0 auto;
+  border: none;
+  box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.2);
+  background-color: white;
+}
+.under1 {
+  width: 545px;
+}
+.under2 {
+  width: 540px;
+}
+/* end 1920px / 1024px ***********************************************************************/
+/* begin 360px *******************************************************************************/
+@media (max-width: 360px) {
+  .wrapper {
+    width: 330px;
+    margin: 0 auto;
+  }
+  .to_do_list {
+    width: 330px;
+  }
+  .to_do_list input {
+    width: 330px;
+  }
+  .delete_task_btn {
+    opacity: 1;
+  }
+  .status_btns {
+    display: block;
+    height: 240px;
+  }
+  .task_count {
+    display: flex;
+    justify-content: center;
+    left: 0;
+  }
+  .filter_btns {
+    width: 330px;
+    height: 50px;
+  }
+  .filter_btns button,
+  .clear_completed_btn {
+    position: relative;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    border: 1px solid lightgray;
+    font-weight: 700;
+    color: black;
+  }
+  .clear_completed_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+  }
+  .filter_btns button:active {
+    background-color: red;
+  }
+  .under1,
+  .under2 {
+    display: none;
+  }
+}
+/* end 360px ********************************************************************************/
+/*★★★★★★★★★★★★★★★★★★★★★★★ ||| BE GREATEST ||| ★★★★★★★★★★★★★★★★★★★★★★★*/
+/************************************ !!!   FINISH   !!! ************************************/
