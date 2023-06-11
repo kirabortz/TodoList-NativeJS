@@ -155,20 +155,6 @@ body {
 .clear_completed_btn:hover {
   border: 1px solid #ead7d7;
 }
-.under1,
-.under2 {
-  height: 5px;
-  margin: 0 auto;
-  border: none;
-  box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.2);
-  background-color: white;
-}
-.under1 {
-  width: 545px;
-}
-.under2 {
-  width: 540px;
-}
 /* end 1920px / 1024px ***********************************************************************/
 /* begin 360px *******************************************************************************/
 @media (max-width: 360px) {
@@ -216,10 +202,6 @@ body {
   }
   .filter_btns button:active {
     background-color: red;
-  }
-  .under1,
-  .under2 {
-    display: none;
   }
 }
 /* end 360px ********************************************************************************/
