@@ -69,10 +69,10 @@ body {
   background-size: contain;
   background-color: transparent;
 
-  background-image: url(/icons/all_active_btn.png);
+  background-image: url(./icons/all_active_btn.png);
 }
 .active_all_tasks {
-  background-image: url(/icons/all_completed_btn.png);
+  background-image: url(./icons/all_completed_btn.png);
 }
 .complete_task_btn,
 .complete_task_btn_done,
@@ -89,12 +89,12 @@ body {
 .complete_task_btn {
   top: 15px;
   left: 5px;
-  background-image: url(/icons/active_btn.png);
+  background-image: url(./icons/active_btn.png);
 }
 .complete_task_btn_done {
   top: 15px;
   left: 5px;
-  background-image: url(/icons/completed_btn.png);
+  background-image: url(./icons/completed_btn.png);
 }
 .delete_task_btn {
   top: 24px;
@@ -103,7 +103,7 @@ body {
   height: 12px;
   padding: 8px;
   opacity: 0;
-  background-image: url(/icons/delete_btn.png);
+  background-image: url(./icons/delete_btn.png);
 }
 .delete_task_btn:hover {
   opacity: 1;
