@@ -4,10 +4,8 @@ let allTasksCompletedState = false;
 let newTaskInput = document.querySelector(".new_task_input");
 let tasksList = document.querySelector(".tasks_list");
 let statusBtns = document.querySelector(".status_btns");
-let taskCount = document.querySelector(".task_count");
 let countTask = document.querySelector("#count_task");
-
-let completeAllTasksBtn = document.querySelector(".complete_all_tasks");
+let completeAllTasksBtn = document.querySelector(".complete_all_tasks_btn");
 let allBtn = document.querySelector(".all_btn");
 let activeBtn = document.querySelector(".active_btn");
 let completedBtn = document.querySelector(".completed_btn");
@@ -37,7 +35,11 @@ const RerenderTasks = (filteredTasks) => {
     const completeTaskBtn = document.createElement("button");
     completeTaskBtn.classList.add("complete_task_btn");
     const deleteTaskBtn = document.createElement("button");
+
     deleteTaskBtn.classList.add("delete_task_btn");
+    taskInput.classList.add("task_input");
+    taskItem.classList.add("task_block");
+    console.log(taskItem);
     taskInput.value = task.value;
     taskItem.id = task.id;
     taskItem.append(completeTaskBtn, taskInput, deleteTaskBtn);
@@ -59,6 +61,7 @@ const AddTask = (inputValue) => {
   storage.push({ id: uniqueId, value: inputValue, completed: false });
   ChangeCountTasks();
   RerenderTasks(filterAllTasks());
+  console.log(storage);
 };
 
 const DelTask = (id) => {
@@ -82,7 +85,7 @@ const AllTaskDone = () => {
   storage.map((task) => {
     task.completed = !allTasksCompletedState ? true : false;
   });
-  completeAllTasksBtn.classList.toggle("active_all_tasks");
+  completeAllTasksBtn.classList.toggle("active_all_tasks_btn");
   allTasksCompletedState = !allTasksCompletedState;
   RerenderTasks(filterAllTasks());
   ChangeCountTasks();
@@ -96,13 +99,12 @@ const DeleteAllTaskDone = () => {
 
 const ChangeCountTasks = () => {
   countTask.innerText = `${filterActiveTasks().length} items left`;
-  console.log(storage.length);
   BlocksVisibility();
 };
 
 const BlocksVisibility = () => {
-  statusBtns.style.visibility = tasksList.style.visibility = completeAllTasksBtn.style.visibility = storage.length === 0 ? "hidden" : "visible";
-  completeAllTasksBtn.classList.toggle("complete_all_tasks", storage.length !== 0);
+  statusBtns.style.display = completeAllTasksBtn.style.display = storage.length === 0 ? "none" : "flex";
+  completeAllTasksBtn.classList.toggle("complete_all_tasks_btn", storage.length !== 0);
   clearCompletedBtn.style.visibility = filterCompletedTasks().length === 0 ? "hidden" : "visible";
 };
 

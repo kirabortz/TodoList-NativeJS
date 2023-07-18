@@ -8,10 +8,10 @@
     <title>ToDoList</title>
   </head>
   <body>
-    <div class="wrapper">
-      <div class="name_header"><h1>todos</h1></div>
+    <main class="main">
+      <h1 class="name_header">todos</h1>
       <div class="to_do_list">
-        <button class="complete_all_tasks"></button>
+        <button class="complete_all_tasks_btn"></button>
         <input class="new_task_input" type="text" placeholder="What needs to be done?" value="" />
         <div class="tasks_list"></div>
         <div class="status_btns">
@@ -19,14 +19,14 @@
             <span id="count_task"></span>
           </div>
           <div class="filter_btns">
-            <button class="all_btn">All</button>
-            <button class="active_btn">Active</button>
-            <button class="completed_btn">Completed</button>
+            <button class="all_btn filter_btn">All</button>
+            <button class="active_btn filter_btn">Active</button>
+            <button class="completed_btn filter_btn">Completed</button>
           </div>
           <button class="clear_completed_btn">Clear completed</button>
         </div>
       </div>
-    </div>
+    </main>
     <script src="index.js"></script>
   </body>
 </html>
