@@ -6,60 +6,32 @@
 }
 html,
 body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10px;
   min-width: 360px;
   min-height: 100%;
   background-color: #f5f5f5;
 }
 /* begin 1920px / 1024px ***********************************************************************/
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.name_header {
+.name_title {
   text-align: center;
   font-size: 110px;
   font-weight: 500;
   color: #ead7d7;
 }
-.to_do_list {
+.todolist {
+  min-width: 550px;
+}
+.new_task_block {
   display: flex;
-  flex-flow: column nowrap;
-  position: relative;
-  max-width: 550px;
-  border: none;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-}
-.task_block {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  position: relative;
-}
-.new_task_input,
-.task_input {
-  width: 550px;
-  padding: 15px 0;
-  outline: none;
-  border: none;
-  box-shadow: 1px 0px 3px rgba(0, 0, 0, 0.2);
-  text-indent: 60px;
-  font-size: 24px;
-}
-.task_input:hover {
-  cursor: default;
-}
-.new_task_input::placeholder {
-  font-style: italic;
-  color: #d3d3d3;
-}
-.task_input:hover + .delete_task_btn {
-  opacity: 1;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
 }
 .complete_all_tasks_btn {
   position: absolute;
-  top: 17px;
-  left: 7px;
+  margin-left: 5px;
   width: 26px;
   height: 26px;
   border: none;
@@ -71,10 +43,50 @@ body {
 .active_all_tasks_btn {
   background-image: url(./icons/all_completed_btn.png);
 }
+.new_task_input::placeholder {
+  font-style: italic;
+  color: #d3d3d3;
+}
+.task_list {
+  background-color: #ffffff;
+}
+.task_block {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  position: relative;
+  min-width: 550px;
+  border-bottom: 1px solid #e0e0e0;
+}
+.new_task_input,
+.task_input,
+.edit_input {
+  width: 100%;
+  padding: 15px 0;
+  outline: none;
+  border: none;
+  text-indent: 20px;
+  font-size: 24px;
+  white-space: normal;
+}
+.new_task_input {
+  text-indent: 45px;
+}
+.task_input:hover {
+  cursor: default;
+}
+
+.task_input:hover + .delete_task_btn {
+  opacity: 1;
+}
+.task_input.done {
+  text-decoration: line-through;
+  color: #919191;
+}
 .complete_task_btn,
 .complete_task_btn_done,
 .delete_task_btn {
-  position: absolute;
+  position: relative;
   width: 30px;
   height: 30px;
   border: none;
@@ -83,20 +95,18 @@ body {
   background-size: contain;
   background-color: transparent;
 }
-.complete_task_btn {
-  top: 15px;
-  left: 5px;
+.complete_task_btn,
+.complete_task_btn_done {
+  margin-left: 5px;
   background-image: url(./icons/active_btn.png);
 }
 .complete_task_btn_done {
   background-image: url(./icons/completed_btn.png);
 }
 .delete_task_btn {
-  top: 24px;
-  right: 15px;
   width: 12px;
   height: 12px;
-  padding: 8px;
+  margin: 0 15px;
   opacity: 0;
   background-image: url(./icons/delete_btn.png);
 }
@@ -116,13 +126,15 @@ body {
   background-color: #ffffff;
   color: #7c7c7c;
 }
-.filter_btns {
+
+.tabs {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   width: 200px;
 }
-.filter_btn,
+
+.tab,
 .clear_completed_btn {
   padding: 4px;
   border-radius: 5px;
@@ -131,40 +143,50 @@ body {
   background-color: transparent;
   color: #7c7c7c;
 }
-.filter_btn:hover,
+.tab:hover,
 .clear_completed_btn:hover {
   border: 1px solid #ead7d7;
+}
+.hidden {
+  display: none;
+}
+.visible {
+  visibility: hidden;
 }
 /* end 1920px / 1024px ***********************************************************************/
 /* begin 360px *******************************************************************************/
 @media (max-width: 760px) {
-  .new_task_input,
-  .task_input {
-    width: 100%;
-    min-width: 360px;
-    text-indent: 45px;
+  .todolist {
+    width: 340px;
+    min-width: 340px;
   }
   .delete_task_btn {
     opacity: 1;
   }
+  .task_block {
+    width: 340px;
+    min-width: 340px;
+  }
   .status_btns {
     flex-flow: column nowrap;
   }
-  .filter_btns {
+  .tabs {
+    text-align: center;
     width: 100%;
     margin: 10px 0;
+    min-width: none;
   }
-  .filter_btn:active,
+  .tab:active,
   .clear_completed_btn:active {
     background-color: #ff0000;
   }
-  .filter_btn,
+  .tab,
   .clear_completed_btn {
     width: 100%;
     border: 1px solid #d3d3d3;
     font-weight: 700;
     color: #000000;
-    height: 50px;
+    padding: 15px;
   }
 }
 /* end 360px ********************************************************************************/

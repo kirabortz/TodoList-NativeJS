@@ -3,30 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.1" />
     <link href="style.css" rel="stylesheet" />
     <title>ToDoList</title>
   </head>
   <body>
-    <main class="main">
-      <h1 class="name_header">todos</h1>
-      <div class="to_do_list">
+    <h1 class="name_title">todos</h1>
+    <div class="todolist">
+      <div class="new_task_block">
         <button class="complete_all_tasks_btn"></button>
-        <input class="new_task_input" type="text" placeholder="What needs to be done?" value="" />
-        <div class="tasks_list"></div>
-        <div class="status_btns">
-          <div class="task_count">
-            <span id="count_task"></span>
-          </div>
-          <div class="filter_btns">
-            <button class="all_btn filter_btn">All</button>
-            <button class="active_btn filter_btn">Active</button>
-            <button class="completed_btn filter_btn">Completed</button>
-          </div>
-          <button class="clear_completed_btn">Clear completed</button>
-        </div>
+        <input type="text" class="new_task_input" placeholder="What needs to be done?" />
       </div>
-    </main>
+      <div class="task_list"></div>
+      <div class="status_btns">
+        <div class="count_task" id="count_task"></div>
+        <div class="tabs">
+          <div class="tab active" data-tab="all">All</div>
+          <div class="tab" data-tab="active">Active</div>
+          <div class="tab" data-tab="completed">Completed</div>
+        </div>
+        <button class="clear_completed_btn">Clear completed</button>
+      </div>
+    </div>
     <script src="index.js"></script>
   </body>
 </html>
