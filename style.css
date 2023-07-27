@@ -164,7 +164,6 @@ body {
     opacity: 1;
   }
   .task_block {
-    width: 340px;
     min-width: 340px;
   }
   .status_btns {

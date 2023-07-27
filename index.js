@@ -64,10 +64,10 @@ class TodoList {
             if (taskInput.value.length === 0) {
               this.tasks = this.tasks.filter((item) => item.id !== task.id);
               taskBlock.remove();
-              this.renderTasks();
+              this.activeTasksCounter();
             }
-            localStorage.setItem("tasks", JSON.stringify(this.tasks));
           }
+          localStorage.setItem("tasks", JSON.stringify(this.tasks));
         };
       });
 
@@ -89,7 +89,7 @@ class TodoList {
       taskBlock.appendChild(taskDeleteBtn);
       this.taskList.appendChild(taskBlock);
     });
-    this.countTask.innerText = `${this.tasks.filter((task) => !task.completed).length} items left`;
+    this.activeTasksCounter();
   }
   allTasksDone() {
     let allTasksCompletedState = false;
@@ -110,20 +110,22 @@ class TodoList {
     });
   }
   addNewTask() {
-    this.newTaskInput.addEventListener("keyup", (e) => {
-      if (e.keyCode === 13 && this.newTaskInput.value.trim()) {
-        const uniqueId = Math.random().toString(36).substr(2, 9);
-        const task = {
-          id: uniqueId,
-          value: this.newTaskInput.value.trim(),
-          completed: false,
-        };
-        this.tasks.push(task);
-        localStorage.setItem("tasks", JSON.stringify(this.tasks));
-        this.renderTasks();
-        this.newTaskInput.value = "";
+    this.newTaskInput.onblur = this.newTaskInput.onkeyup = (e) => {
+      if (e.key == "Enter" || e.type == "blur") {
+        if (this.newTaskInput.value.trim()) {
+          const uniqueId = Math.random().toString(36).substr(2, 9);
+          const task = {
+            id: uniqueId,
+            value: this.newTaskInput.value.trim(),
+            completed: false,
+          };
+          this.tasks.push(task);
+          localStorage.setItem("tasks", JSON.stringify(this.tasks));
+          this.renderTasks();
+          this.newTaskInput.value = "";
+        }
       }
-    });
+    };
   }
   deleteAllCompletedTasks() {
     this.clearCompletedBtn.addEventListener("click", () => {
@@ -131,6 +133,9 @@ class TodoList {
       localStorage.setItem("tasks", JSON.stringify(this.tasks));
       this.renderTasks();
     });
+  }
+  activeTasksCounter() {
+    this.countTask.innerText = `${this.tasks.filter((task) => !task.completed).length} items left`;
   }
   render() {
     this.tasks = JSON.parse(localStorage.getItem("tasks")) || [];
