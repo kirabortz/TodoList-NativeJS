@@ -56,7 +56,6 @@ class TodoList {
 
         editTaskInput.onchange = editTaskInput.onkeyup = (e) => {
           if (e.key == "Enter" || e.type == "change") {
-            console.log(taskInput);
             taskDoneBtn.style.visibility = "visible";
             taskDeleteBtn.style.display = "block";
             editTaskInput.replaceWith(taskInput);
