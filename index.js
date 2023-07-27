@@ -54,8 +54,9 @@ class TodoList {
         taskInput.replaceWith(editTaskInput);
         editTaskInput.focus();
 
-        editTaskInput.onblur = editTaskInput.onkeyup = (e) => {
-          if (e.key == "Enter" || e.type == "blur") {
+        editTaskInput.onchange = editTaskInput.onkeyup = (e) => {
+          if (e.key == "Enter" || e.type == "change") {
+            console.log(taskInput);
             taskDoneBtn.style.visibility = "visible";
             taskDeleteBtn.style.display = "block";
             editTaskInput.replaceWith(taskInput);
