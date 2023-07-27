@@ -53,21 +53,22 @@ class TodoList {
         editTaskInput.value = task.value;
         taskInput.replaceWith(editTaskInput);
         editTaskInput.focus();
-        editTaskInput.addEventListener("blur", () => {
-          taskDoneBtn.style.visibility = "visible";
-          taskDeleteBtn.style.display = "block";
-          editTaskInput.style.border = "none";
-          editTaskInput.replaceWith(taskInput);
-          task.value = editTaskInput.value;
-          taskInput.value = task.value;
 
-          if (taskInput.value.length === 0) {
-            this.tasks = this.tasks.filter((item) => item.id !== task.id);
-            taskBlock.remove();
-            this.renderTasks();
+        editTaskInput.onblur = editTaskInput.onkeyup = (e) => {
+          if (e.key == "Enter" || e.type == "blur") {
+            taskDoneBtn.style.visibility = "visible";
+            taskDeleteBtn.style.display = "block";
+            editTaskInput.replaceWith(taskInput);
+            task.value = editTaskInput.value;
+            taskInput.value = task.value;
+            if (taskInput.value.length === 0) {
+              this.tasks = this.tasks.filter((item) => item.id !== task.id);
+              taskBlock.remove();
+              this.renderTasks();
+            }
+            localStorage.setItem("tasks", JSON.stringify(this.tasks));
           }
-          localStorage.setItem("tasks", JSON.stringify(this.tasks));
-        });
+        };
       });
 
       const taskDeleteBtn = document.createElement("button");
@@ -93,7 +94,7 @@ class TodoList {
   allTasksDone() {
     let allTasksCompletedState = false;
     this.completeAllTasksBtn.addEventListener("click", () => {
-      this.tasks.forEach((task) => (task.completed = !allTasksCompletedState ? true : false));
+      this.tasks.forEach((task) => (task.completed = !allTasksCompletedState));
       allTasksCompletedState = !allTasksCompletedState;
       this.completeAllTasksBtn.classList.toggle("active_all_tasks_btn");
       localStorage.setItem("tasks", JSON.stringify(this.tasks));
@@ -110,19 +111,17 @@ class TodoList {
   }
   addNewTask() {
     this.newTaskInput.addEventListener("keyup", (e) => {
-      if (e.keyCode === 13) {
-        if (this.newTaskInput.value.trim()) {
-          const uniqueId = Math.random().toString(36).substr(2, 9);
-          const task = {
-            id: uniqueId,
-            value: this.newTaskInput.value.trim(),
-            completed: false,
-          };
-          this.tasks.push(task);
-          localStorage.setItem("tasks", JSON.stringify(this.tasks));
-          this.renderTasks();
-          this.newTaskInput.value = "";
-        }
+      if (e.keyCode === 13 && this.newTaskInput.value.trim()) {
+        const uniqueId = Math.random().toString(36).substr(2, 9);
+        const task = {
+          id: uniqueId,
+          value: this.newTaskInput.value.trim(),
+          completed: false,
+        };
+        this.tasks.push(task);
+        localStorage.setItem("tasks", JSON.stringify(this.tasks));
+        this.renderTasks();
+        this.newTaskInput.value = "";
       }
     });
   }
