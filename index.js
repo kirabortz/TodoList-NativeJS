@@ -40,32 +40,40 @@ class TodoList {
         task.completed = !task.completed;
         this.renderTasks();
       });
-
-      const taskInput = document.createElement("input");
-      taskInput.classList.add("task_input");
-      taskInput.value = task.value;
-      taskInput.addEventListener("dblclick", () => {
+      const taskLabel = document.createElement("label");
+      taskLabel.classList.add("task_label");
+      taskLabel.textContent = task.value;
+      taskLabel.addEventListener("dblclick", () => {
+        let originalTaskText = task.value;
         taskDoneBtn.style.visibility = "hidden";
         taskDeleteBtn.style.display = "none";
         const editTaskInput = document.createElement("input");
         editTaskInput.classList.add("edit_input");
         editTaskInput.style.border = "1px solid black";
-        editTaskInput.value = task.value;
-        taskInput.replaceWith(editTaskInput);
+        editTaskInput.value = taskLabel.textContent;
+        taskLabel.replaceWith(editTaskInput);
         editTaskInput.focus();
 
         editTaskInput.onchange = editTaskInput.onkeyup = (e) => {
           if (e.key == "Enter" || e.type == "change") {
             taskDoneBtn.style.visibility = "visible";
             taskDeleteBtn.style.display = "block";
-            editTaskInput.replaceWith(taskInput);
+            editTaskInput.replaceWith(taskLabel);
             task.value = editTaskInput.value;
-            taskInput.value = task.value;
-            if (taskInput.value.length === 0) {
+            taskLabel.textContent = task.value;
+
+            if (taskLabel.textContent.length === 0) {
               this.tasks = this.tasks.filter((item) => item.id !== task.id);
               taskBlock.remove();
               this.activeTasksCounter();
             }
+          }
+          if (e.key == "Escape") {
+            taskDoneBtn.style.visibility = "visible";
+            taskDeleteBtn.style.display = "block";
+            editTaskInput.value = originalTaskText;
+            taskLabel.textContent = editTaskInput.value;
+            editTaskInput.replaceWith(taskLabel);
           }
           localStorage.setItem("tasks", JSON.stringify(this.tasks));
         };
@@ -79,13 +87,13 @@ class TodoList {
         this.renderTasks();
       });
       if (task.completed) {
-        taskInput.classList.toggle("done");
+        taskLabel.classList.toggle("done");
         taskDoneBtn.classList.toggle("complete_task_btn");
         taskDoneBtn.classList.toggle("complete_task_btn_done");
         localStorage.setItem("tasks", JSON.stringify(this.tasks));
       }
       taskBlock.appendChild(taskDoneBtn);
-      taskBlock.appendChild(taskInput);
+      taskBlock.appendChild(taskLabel);
       taskBlock.appendChild(taskDeleteBtn);
       this.taskList.appendChild(taskBlock);
     });
@@ -119,7 +127,7 @@ class TodoList {
             value: this.newTaskInput.value.trim(),
             completed: false,
           };
-          this.tasks.push(task);
+          this.tasks.unshift(task);
           localStorage.setItem("tasks", JSON.stringify(this.tasks));
           this.renderTasks();
           this.newTaskInput.value = "";

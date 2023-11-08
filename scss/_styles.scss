@@ -1,0 +1,212 @@
+.title {
+  text-align: center;
+  font-size: 110px;
+  font-weight: 500;
+  color: #ead7d7;
+}
+
+.todolist {
+  min-width: 550px;
+  @include tabletPhoneMixin() {
+    width: 340px;
+    min-width: 340px;
+  }
+  .new_task_block {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+
+    .complete_all_tasks_btn {
+      position: absolute;
+      margin-left: 5px;
+      width: 26px;
+      height: 26px;
+      border: none;
+      cursor: pointer;
+      background-size: contain;
+      background-color: transparent;
+      background-image: url(../icons/all_active_btn.png);
+    }
+
+    .active_all_tasks_btn {
+      background-image: url(../icons/all_completed_btn.png);
+    }
+
+    .new_task_input {
+      width: 100%;
+      padding: 15px 0;
+      outline: none;
+      border: none;
+      text-indent: 45px;
+      font-size: 24px;
+      white-space: normal;
+    }
+
+    .new_task_input::placeholder {
+      font-style: italic;
+      color: #d3d3d3;
+    }
+  }
+
+  .task_list {
+    background-color: #ffffff;
+
+    .task_block {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      position: relative;
+      min-width: 550px;
+      border-bottom: 1px solid #e0e0e0;
+      @include tabletPhoneMixin() {
+        min-width: 340px;
+      }
+      .task_label,
+      .edit_input {
+        width: 100%;
+        padding: 15px;
+        outline: none;
+        border: none;
+        font-size: 24px;
+        word-break: break-all;
+      }
+
+      .task_input:hover {
+        cursor: default;
+      }
+
+      .task_input:hover + .delete_task_btn {
+        opacity: 1;
+      }
+
+      .task_input.done {
+        text-decoration: line-through;
+        color: #919191;
+      }
+
+      .complete_task_btn,
+      .complete_task_btn_done,
+      .delete_task_btn {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        border: none;
+        cursor: pointer;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: transparent;
+      }
+
+      .complete_task_btn,
+      .complete_task_btn_done {
+        margin-left: 5px;
+        background-image: url(../icons/active_btn.png);
+      }
+
+      .complete_task_btn_done {
+        background-image: url(../icons/completed_btn.png);
+      }
+
+      .delete_task_btn {
+        width: 12px;
+        height: 12px;
+        margin-right: 15px;
+        opacity: 0;
+        background-image: url(../icons/delete_btn.png);
+        @include tabletPhoneMixin() {
+          opacity: 1;
+        }
+      }
+
+      .delete_task_btn:hover {
+        opacity: 1;
+      }
+
+      .done {
+        text-decoration: line-through;
+        color: #d3d3d3;
+      }
+    }
+  }
+
+  .status_btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    color: #7c7c7c;
+    @include tabletPhoneMixin() {
+      flex-flow: column nowrap;
+    }
+
+    .tabs {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      width: 200px;
+      @include tabletPhoneMixin() {
+        text-align: center;
+        width: 100%;
+        margin: 10px 0;
+        min-width: none;
+      }
+
+      .tab {
+        padding: 4px;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        background-color: transparent;
+        color: #7c7c7c;
+        @include tabletPhoneMixin() {
+          width: 100%;
+          border: 1px solid #d3d3d3;
+          font-weight: 700;
+          color: #000000;
+          padding: 15px;
+          &:active {
+            background-color: #ff0000;
+          }
+        }
+      }
+
+      .tab:hover {
+        border: 1px solid #ead7d7;
+      }
+    }
+
+    .clear_completed_btn {
+      padding: 4px;
+      border-radius: 5px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      background-color: transparent;
+      color: #7c7c7c;
+      @include tabletPhoneMixin() {
+        width: 100%;
+        border: 1px solid #d3d3d3;
+        font-weight: 700;
+        color: #000000;
+        padding: 15px;
+
+        &:active {
+          background-color: #ff0000;
+        }
+      }
+    }
+
+    .clear_completed_btn:hover {
+      border: 1px solid #ead7d7;
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .visible {
+    visibility: hidden;
+  }
+}
