@@ -15,6 +15,7 @@ class TodoList {
   renderTasks() {
     this.completeAllTasksBtn.classList.toggle("hidden", this.tasks.length === 0);
     this.statusBtns.classList.toggle("hidden", this.tasks.length === 0);
+
     if (this.tasks.some((task) => task.completed)) {
       this.clearCompletedBtn.classList.remove("visible");
     } else {
@@ -22,6 +23,7 @@ class TodoList {
     }
 
     this.taskList.innerHTML = "";
+
     const filteredTasks = this.tasks.filter((task) => {
       if (this.activeTab === "all") {
         return true;
@@ -31,6 +33,7 @@ class TodoList {
         return task.completed;
       }
     });
+
     filteredTasks.forEach((task) => {
       const taskBlock = document.createElement("div");
       taskBlock.classList.add("task_block");
@@ -135,7 +138,7 @@ class TodoList {
       }
     };
   }
-  deleteAllCompletedTasks() {
+  delDonedTasks() {
     this.clearCompletedBtn.addEventListener("click", () => {
       this.tasks = this.tasks.filter((task) => !task.completed);
       localStorage.setItem("tasks", JSON.stringify(this.tasks));
@@ -151,7 +154,7 @@ class TodoList {
     this.allTasksDone();
     this.selectTab();
     this.addNewTask();
-    this.deleteAllCompletedTasks();
+    this.delDonedTasks();
   }
 }
 
