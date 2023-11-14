@@ -2,7 +2,7 @@ import { CompleteTask } from "./CompleteTask.js";
 import { DeleteTask } from "./DeleteTask.js";
 import { EditTask } from "./EditTask.js";
 
-export function TaskBlock(filteredTasks) {
+export function TaskBlock(tasks, filteredTasks, activeTab) {
   let taskList = document.querySelector(".task_list");
   taskList.innerHTML = "";
 
@@ -24,11 +24,11 @@ export function TaskBlock(filteredTasks) {
     let taskDeleteBtn = document.createElement("button");
     taskDeleteBtn.classList.add("delete_task_btn");
 
-    CompleteTask(taskDoneBtn, filteredTasks, taskLabel, task);
+    CompleteTask(tasks, task, taskDoneBtn, filteredTasks, taskLabel, activeTab);
 
-    EditTask(filteredTasks, taskDeleteBtn, taskDoneBtn, taskBlock, taskLabel, task);
+    EditTask(filteredTasks, task, taskDeleteBtn, taskDoneBtn, taskBlock, taskLabel);
 
-    DeleteTask(taskDeleteBtn, filteredTasks, task);
+    DeleteTask(tasks, task, taskDeleteBtn, activeTab);
 
     taskBlock.append(taskDoneBtn, taskLabel, taskDeleteBtn);
     taskList.appendChild(taskBlock);
