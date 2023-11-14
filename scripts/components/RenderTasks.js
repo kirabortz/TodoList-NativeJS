@@ -3,7 +3,7 @@ import { AddNewTask } from "./AddNewTask.js";
 import { FilterTask } from "./FilterTask.js";
 import { TaskBlock } from "./TaskBlock.js";
 import { Visibility } from "./Visibility.js";
-import { SelectTab } from "./selectTab.js";
+import { SelectTab } from "./SelectTab.js";
 
 export function RenderTasks(tasks, activeTab) {
   SelectTab(tasks);
