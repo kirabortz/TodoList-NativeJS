@@ -1,7 +1,7 @@
 import { ActiveCounter } from "./ActiveCounter.js";
 import { StorageSet } from "./Storage.js";
 
-export function EditTask(filteredTasks, taskDeleteBtn, taskDoneBtn, taskBlock, taskLabel, task) {
+export function EditTask(filteredTasks, task, taskDeleteBtn, taskDoneBtn, taskBlock, taskLabel) {
   taskLabel.addEventListener("dblclick", () => {
     let originalTaskText = task.value;
 
@@ -39,7 +39,6 @@ export function EditTask(filteredTasks, taskDeleteBtn, taskDoneBtn, taskBlock, t
         taskLabel.textContent = editTaskInput.value;
         editTaskInput.replaceWith(taskLabel);
       }
-
       StorageSet(filteredTasks);
     };
   });
