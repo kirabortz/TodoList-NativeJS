@@ -1,7 +1,9 @@
 import { RenderTasks } from "./RenderTasks.js";
 import { StorageSet } from "./Storage.js";
 
-export function AddNewTask(newTaskInput, tasks) {
+export function AddNewTask(tasks, activeTab) {
+  let newTaskInput = document.querySelector(".new_task_input");
+
   newTaskInput.onblur = newTaskInput.onkeyup = (e) => {
     if (e.key == "Enter" || e.type == "blur") {
       if (newTaskInput.value.trim()) {
@@ -12,10 +14,11 @@ export function AddNewTask(newTaskInput, tasks) {
           completed: false,
         };
         tasks.unshift(task);
+
         StorageSet(tasks);
         newTaskInput.value = "";
-        RenderTasks();
       }
+      RenderTasks(tasks, activeTab);
     }
   };
 }
