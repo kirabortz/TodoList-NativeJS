@@ -1,7 +1,8 @@
 import { RenderTasks } from "./RenderTasks.js";
-import { StorageSet } from "./Storage.js";
+import { StorageParse, StorageSet } from "./Storage.js";
 
-export function AddNewTask(tasks, activeTab) {
+export function AddNewTask(activeTab) {
+  let tasks = StorageParse();
   let newTaskInput = document.querySelector(".new_task_input");
 
   newTaskInput.onblur = newTaskInput.onkeyup = (e) => {
@@ -18,7 +19,7 @@ export function AddNewTask(tasks, activeTab) {
         StorageSet(tasks);
         newTaskInput.value = "";
       }
-      RenderTasks(tasks, activeTab);
+      RenderTasks(activeTab);
     }
   };
 }
