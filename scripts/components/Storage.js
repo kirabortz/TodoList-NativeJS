@@ -5,4 +5,3 @@ export function StorageParse() {
 export function StorageSet(tasks) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
-//
