@@ -1,14 +1,15 @@
 import { RenderTasks } from "./RenderTasks.js";
-import { StorageParse, StorageSet } from "./Storage.js";
+import { StorageParse, StorageSet, StorageTabParse } from "./Storage.js";
 
-export function DelDonedTasks(activeTab) {
-  let clearCompletedBtn = document.querySelector(".clear_completed_btn");
+export const DelDonedTasks = () => {
+  const clearCompletedBtn = document.querySelector(".clear_completed_btn");
 
   clearCompletedBtn.addEventListener("click", () => {
-    let tasks = StorageParse();
-    tasks = tasks.filter((task) => !task.completed);
+    const activeTab = StorageTabParse();
+    const tasks = StorageParse();
+    const inCompleteTasks = tasks.filter((task) => !task.completed);
 
-    StorageSet(tasks);
+    StorageSet(inCompleteTasks);
     RenderTasks(activeTab);
   });
-}
+};
