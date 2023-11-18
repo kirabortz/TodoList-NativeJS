@@ -179,6 +179,12 @@ body {
   background-color: transparent;
   color: #7c7c7c;
 }
+.todolist .status_btns .tabs .tab:hover {
+  border: 1px solid #ead7d7;
+}
+.todolist .status_btns .tabs .tab.selected {
+  border: 1px solid #99414f;
+}
 @media (max-width: 780px) {
   .todolist .status_btns .tabs .tab {
     width: 100%;
@@ -190,9 +196,10 @@ body {
   .todolist .status_btns .tabs .tab:active {
     background-color: #ff0000;
   }
-}
-.todolist .status_btns .tabs .tab:hover {
-  border: 1px solid #ead7d7;
+  .todolist .status_btns .tabs .tab.selected {
+    background-color: #94283a;
+    color: #ffffff;
+  }
 }
 .todolist .status_btns .clear_completed_btn {
   padding: 4px;
