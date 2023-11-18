@@ -1,17 +1,18 @@
 import { AllTasksDone } from "./scripts/components/AllTasksDone.js";
 import { DelDonedTasks } from "./scripts/components/DelDonedTasks.js";
-import { TabState } from "./scripts/components/TabState.js";
 import { RenderTasks } from "./scripts/components/RenderTasks.js";
 import { SelectTab } from "./scripts/components/SelectTab.js";
+import { StorageTabParse } from "./scripts/components/Storage.js";
 
-export function App() {
-  let activeTab = "all";
-  SelectTab();
+function App() {
+  const activeTab = StorageTabParse();
 
-  AllTasksDone(TabState(activeTab));
+  SelectTab(activeTab);
 
-  DelDonedTasks(TabState(activeTab));
+  AllTasksDone(activeTab);
 
-  RenderTasks(TabState(activeTab));
+  DelDonedTasks(activeTab);
+
+  RenderTasks(activeTab);
 }
 App();
