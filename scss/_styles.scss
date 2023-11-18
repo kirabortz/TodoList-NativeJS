@@ -160,20 +160,28 @@
         cursor: pointer;
         background-color: transparent;
         color: #7c7c7c;
+
+        &:hover {
+          border: 1px solid #ead7d7;
+        }
+        &.selected {
+          border: 1px solid #99414f;
+        }
         @include tabletPhoneMixin() {
           width: 100%;
           border: 1px solid #d3d3d3;
           font-weight: 700;
           color: #000000;
           padding: 15px;
+
           &:active {
             background-color: #ff0000;
           }
+          &.selected {
+            background-color: #94283a;
+            color: #ffffff;
+          }
         }
-      }
-
-      .tab:hover {
-        border: 1px solid #ead7d7;
       }
     }
 
