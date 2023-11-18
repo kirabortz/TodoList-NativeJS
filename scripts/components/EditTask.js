@@ -1,14 +1,14 @@
 import { ActiveCounter } from "./ActiveCounter.js";
 import { StorageSet } from "./Storage.js";
 
-export function EditTask(filteredTasks, task, taskDeleteBtn, taskDoneBtn, taskBlock, taskLabel) {
+export const EditTask = (filteredTasks, task, taskDeleteBtn, taskDoneBtn, taskBlock, taskLabel) => {
   taskLabel.addEventListener("dblclick", () => {
-    let originalTaskText = task.value;
+    const originalTaskText = task.value;
 
     taskDoneBtn.style.visibility = "hidden";
     taskDeleteBtn.style.display = "none";
 
-    let editTaskInput = document.createElement("input");
+    const editTaskInput = document.createElement("input");
     editTaskInput.classList.add("edit_input");
     editTaskInput.id = `${task.id}`;
     editTaskInput.style.border = "1px solid black";
@@ -42,4 +42,4 @@ export function EditTask(filteredTasks, task, taskDeleteBtn, taskDoneBtn, taskBl
       StorageSet(filteredTasks);
     };
   });
-}
+};
