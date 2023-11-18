@@ -1,9 +1,9 @@
 import { RenderTasks } from "./RenderTasks.js";
 import { StorageParse, StorageSet } from "./Storage.js";
 
-export function AddNewTask(activeTab) {
-  let tasks = StorageParse();
-  let newTaskInput = document.querySelector(".new_task_input");
+export const AddNewTask = (activeTab) => {
+  const tasks = StorageParse();
+  const newTaskInput = document.querySelector(".new_task_input");
 
   newTaskInput.onblur = newTaskInput.onkeyup = (e) => {
     if (e.key == "Enter" || e.type == "blur") {
@@ -22,4 +22,4 @@ export function AddNewTask(activeTab) {
       RenderTasks(activeTab);
     }
   };
-}
+};
