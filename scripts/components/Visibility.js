@@ -1,7 +1,7 @@
-export function Visibility(tasks) {
-  let statusBtns = document.querySelector(".status_btns");
-  let clearCompletedBtn = document.querySelector(".clear_completed_btn");
-  let completeAllTasksBtn = document.querySelector(".complete_all_tasks_btn");
+export const Visibility = (tasks) => {
+  const statusBtns = document.querySelector(".status_btns");
+  const clearCompletedBtn = document.querySelector(".clear_completed_btn");
+  const completeAllTasksBtn = document.querySelector(".complete_all_tasks_btn");
 
   completeAllTasksBtn.classList.toggle("hidden", tasks.length === 0);
   statusBtns.classList.toggle("hidden", tasks.length === 0);
@@ -11,4 +11,4 @@ export function Visibility(tasks) {
   } else {
     clearCompletedBtn.classList.add("visible");
   }
-}
+};
