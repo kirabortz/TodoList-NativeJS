@@ -1,12 +1,12 @@
 import { RenderTasks } from "./RenderTasks.js";
 import { StorageParse, StorageSet } from "./Storage.js";
 
-export function DeleteTask(task, taskDeleteBtn, activeTab) {
+export const DeleteTask = (task, taskDeleteBtn, activeTab) => {
   taskDeleteBtn.addEventListener("click", () => {
-    let tasks = StorageParse();
-    tasks = tasks.filter((t) => t.id !== task.id);
+    const tasks = StorageParse();
+    const afterRemoveTasks = tasks.filter((t) => t.id !== task.id);
 
-    StorageSet(tasks);
+    StorageSet(afterRemoveTasks);
     RenderTasks(activeTab);
   });
-}
+};
