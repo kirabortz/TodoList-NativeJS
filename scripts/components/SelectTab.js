@@ -1,14 +1,32 @@
 import { RenderTasks } from "./RenderTasks.js";
-import { TabState } from "./TabState.js";
+import { StorageTabParse, StorageTabSet } from "./Storage.js";
 
-export function SelectTab() {
-  let tabs = document.querySelectorAll(".tab");
+export const SelectTab = (activeTab) => {
+  const tabs = document.querySelectorAll(".tab");
+
   tabs.forEach((tab) => {
-    tab.classList.remove("active");
+    if (activeTab) {
+      tab.classList.remove("active");
+      tab.classList.remove("selected");
+      activeTab.classList.add("active");
+      activeTab.classList.add("selected");
+    }
     tab.addEventListener("click", () => {
-      tab.classList.add("active");
-
-      RenderTasks(TabState(tab.dataset.tab));
+      CurrentTab(tab);
     });
   });
-}
+
+  const CurrentTab = (selectedTab) => {
+    StorageTabSet(selectedTab);
+    const activeTab = StorageTabParse();
+
+    tabs.forEach((tab) => {
+      tab.classList.remove("active");
+      tab.classList.remove("selected");
+    });
+
+    activeTab.classList.add("active");
+    activeTab.classList.add("selected");
+    RenderTasks(activeTab);
+  };
+};
