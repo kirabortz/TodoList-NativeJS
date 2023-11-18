@@ -1,12 +1,13 @@
 import { RenderTasks } from "./RenderTasks.js";
-import { StorageParse, StorageSet } from "./Storage.js";
+import { StorageParse, StorageSet, StorageTabParse } from "./Storage.js";
 
-export function AllTasksDone(activeTab) {
-  let completeAllTasksBtn = document.querySelector(".complete_all_tasks_btn");
+export const AllTasksDone = () => {
+  const completeAllTasksBtn = document.querySelector(".complete_all_tasks_btn");
 
   let allTasksCompletedState = false;
   completeAllTasksBtn.addEventListener("click", () => {
-    let tasks = StorageParse();
+    const activeTab = StorageTabParse();
+    const tasks = StorageParse();
     tasks.forEach((task) => (task.completed = !allTasksCompletedState));
     StorageSet(tasks);
     allTasksCompletedState = !allTasksCompletedState;
@@ -14,4 +15,4 @@ export function AllTasksDone(activeTab) {
 
     RenderTasks(activeTab);
   });
-}
+};
