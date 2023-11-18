@@ -1,11 +1,11 @@
-export function FilterTask(tasks, activeTab) {
+export const FilterTask = (tasks, activeTab) => {
   return tasks.filter((task) => {
-    if (activeTab === "all") {
+    if (activeTab.dataset.tab === "all") {
       return true;
-    } else if (activeTab === "active") {
+    } else if (activeTab.dataset.tab === "active") {
       return !task.completed;
-    } else if (activeTab === "completed") {
+    } else if (activeTab.dataset.tab === "completed") {
       return task.completed;
     }
   });
-}
+};
