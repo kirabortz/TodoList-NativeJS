@@ -1,10 +1,17 @@
 import { RenderTasks } from "./RenderTasks.js";
-import { StorageSet } from "./Storage.js";
+import { StorageParse, StorageSet, StorageTabParse } from "./Storage.js";
 
-export function CompleteTask(task, taskDoneBtn, filteredTasks, taskLabel, activeTab) {
+export const CompleteTask = (task, taskDoneBtn, taskLabel) => {
   taskDoneBtn.addEventListener("click", () => {
-    task.completed = !task.completed;
-    StorageSet(filteredTasks);
+    const activeTab = StorageTabParse();
+    const tasks = StorageParse();
+    tasks.map((t) => {
+      if (task.id == t.id) {
+        t.completed = !t.completed;
+      }
+      return t;
+    });
+    StorageSet(tasks);
     RenderTasks(activeTab);
   });
   if (task.completed) {
@@ -12,4 +19,4 @@ export function CompleteTask(task, taskDoneBtn, filteredTasks, taskLabel, active
     taskDoneBtn.classList.toggle("complete_task_btn");
     taskDoneBtn.classList.toggle("complete_task_btn_done");
   }
-}
+};
