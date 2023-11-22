@@ -1,4 +1,4 @@
-import { updateTaskList } from "./updateTaskList.js";
+import { updateTaskList } from "./UpdateTaskList.js";
 import { getLocalStorageTabParse, setLocalStorage } from "./LocalStorage.js";
 
 export const setActiveTab = (activeTab) => {

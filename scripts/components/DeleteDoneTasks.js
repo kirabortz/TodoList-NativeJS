@@ -1,4 +1,4 @@
-import { updateTaskList } from "./updateTaskList.js";
+import { updateTaskList } from "./UpdateTaskList.js";
 import { getLocalStorageParse, setLocalStorage, getLocalStorageTabParse } from "./LocalStorage.js";
 
 export const deleteDoneTasks = () => {
