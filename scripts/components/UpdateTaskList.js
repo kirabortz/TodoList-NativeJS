@@ -2,7 +2,7 @@ import { updateActiveTasksCounter } from "./UpdateActiveTasksCounter.js";
 import { createNewTask } from "./CreateNewTask.js";
 import { getFilteredTasks } from "./GetFilteredTasks.js";
 import { createTaskBlock } from "./CreateTaskBlock.js";
-import { updateTaskStatusButtons } from "./UpdateTaskStatusBtns.js";
+import { updateTaskStatusButtons } from "./UpdateTaskStatusButtons.js";
 import { getLocalStorageParse } from "./LocalStorage.js";
 
 export const updateTaskList = (activeTab) => {
