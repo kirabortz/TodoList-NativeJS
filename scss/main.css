@@ -54,10 +54,9 @@ body {
 }
 .todolist .new_task_block .new_task_input {
   width: 100%;
-  padding: 15px 0;
+  padding: 15px 45px;
   outline: none;
   border: none;
-  text-indent: 45px;
   font-size: 24px;
   white-space: normal;
 }
