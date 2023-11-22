@@ -1,12 +1,13 @@
-import { RenderTasks } from "./RenderTasks.js";
-import { StorageParse, StorageSet } from "./Storage.js";
+import { updateTaskList } from "./updateTaskList.js";
+import { getLocalStorageParse, setLocalStorage } from "./LocalStorage.js";
 
-export const DeleteTask = (task, taskDeleteBtn, activeTab) => {
+export const deleteTask = (currentTask, taskDeleteBtn, activeTab) => {
   taskDeleteBtn.addEventListener("click", () => {
-    const tasks = StorageParse();
-    const afterRemoveTasks = tasks.filter((t) => t.id !== task.id);
+    const tasks = getLocalStorageParse();
 
-    StorageSet(afterRemoveTasks);
-    RenderTasks(activeTab);
+    const afterRemoveTasks = tasks.filter((task) => task.id !== currentTask.id);
+
+    setLocalStorage(afterRemoveTasks);
+    updateTaskList(activeTab);
   });
 };
